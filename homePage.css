@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navBar {
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50rem;
+    background-color: #fec89a;
+    margin-bottom: 10px brown;
+}
+
+#mainHead {
+    font-size: 2rem;
+    background-image: url(https://thevisualcommunicationguy.com/wp-content/uploads/2016/05/Header-Background.jpg);
+    color: whitesmoke;
+    border-radius: 0.7rem;
+    font-family:'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.loginBtn {
+    font-size: 0.9rem;
+    width: 5rem;
+    height: 1.8rem;
+    background-color: black;
+    color: whitesmoke;
+    border-radius: 0.4rem;
+}
+
+#line {
+    display: flex;
+    justify-content: center;
+}
+
+.bodyPart {
+    height: 35rem;
+    display: flex;
+    justify-content: center;
+    background-image: url(https://www.checkatrade.com/blog/wp-content/uploads/2021/03/home-library-cost.jpg);
+    background-size: cover;
+}
+
+.quote {
+    font-size: 4rem;
+    color: white;
+    margin-top: 7rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    background-image: url(https://tse2.mm.bing.net/th?id=OIP.iDN_Vgp7csLhucxdjs6C9wHaB2&pid=Api&P=0&h=180);
+    background-size: cover;
+    color: white;
+    gap: 20rem;
+}
+
+.contact ,.timings , .address {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#contactHead {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+}
+
+#contact1 {
+    display: flex;
+    justify-content: center;
+}
+
+#timeMaintag {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    font-size: 1.3rem;
+}
+
+#time {
+    display: flex;
+    justify-content: center;
+}
+
+#addMaintag {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    font-size: 1.3rem;
+}
+
+#place {
+    display: flex;
+    justify-content: center;
+}
