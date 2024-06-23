@@ -9,16 +9,15 @@
     justify-content: center;
     align-items: center;
     gap: 50rem;
-    background-color: #fec89a;
+    background-image: url(https://thevisualcommunicationguy.com/wp-content/uploads/2016/05/Header-Background.jpg);
     margin-bottom: 10px brown;
 }
 
 #mainHead {
     font-size: 2rem;
-    background-image: url(https://thevisualcommunicationguy.com/wp-content/uploads/2016/05/Header-Background.jpg);
-    color: whitesmoke;
+    color: rgb(9, 247, 152);
     border-radius: 0.7rem;
-    font-family:'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .loginBtn {
@@ -28,6 +27,11 @@
     background-color: black;
     color: whitesmoke;
     border-radius: 0.4rem;
+}
+
+.loginBtn:hover {
+    background-color: white;
+    color: black;
 }
 
 #line {
