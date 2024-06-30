@@ -287,8 +287,10 @@ ul a{
     background-color: #2C302E;
     color:white;
     height:50px;
-    font-size:0.7rem;
-    text-align: center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size:0.85rem;
     
 
 }
