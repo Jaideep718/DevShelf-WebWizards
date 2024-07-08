@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -11,13 +10,13 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
+      console.log('Sending data:', { username, email, password });
       await axios.post('http://localhost:5000/signup', { username, email, password });
       alert('User registered successfully');
       navigate('/login');
     } catch (error) {
-      alert('Error registering user');
+      alert('Error register user');
     }
   };
 
@@ -80,4 +79,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
