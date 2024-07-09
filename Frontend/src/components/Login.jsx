@@ -1,44 +1,92 @@
 import React from 'react'
+import "../components/HomePage.css";
 
-function Login() {
+
+function homePage() {
   return (
-    <div>
-        <div className="h-16 flex justify-between items-center text-center bg-[url(https://thevisualcommunicationguy.com/wp-content/uploads/2016/05/Header-Background.jpg)]">
-            <p className="text-3xl text-lime-300 rounded-xl font-serif text-left">LIBRARY MANAGEMENT SYSTEM</p>
-            {/* <button href = "/login" className="h-9 w-20 mr-10 text-center text-sm bg-black hover:bg-white text-slate-100 hover:text-black rounded-lg ">LOGIN</button>  */}
-            <a href="/login" className="w-20 mr-10 text-center text-sm bg-black hover:bg-white text-slate-100 hover:text-black rounded-lg ">LOGIN</a> 
-        </div>
-        <div className="h-lvh flex justify-center bg-[url(https://www.checkatrade.com/blog/wp-content/uploads/2021/03/home-library-cost.jpg)] bg-cover">
-          <div className="text-7xl text-white mt-28 font-serif">
-            <p className="flex justify-center mb-8">Education is for improving the lives of others</p>
-            <p className="flex justify-center mb-8">and for leaving your community and </p>
-            <p className="flex justify-center mb-8">would better than you find it .</p>
-            <p className="text-4xl flex justify-center items-center mt-9 ml-20">- Marian Wright Edelman</p>
-          </div>
-        </div>
-        <div>
-          <div className="bg-[url(https://tse2.mm.bing.net/th?id=OIP.iDN_Vgp7csLhucxdjs6C9wHaB2&pid=Api&P=0&h=180)] flex justify-center bg-cover text-white gap-96">
-            <div className="mt-8 mb-8">
-                <p className="flex justify-center underline">Contact Us</p>
-                <p className="flex justify-center">Email : abcd@iitdh.ac.in</p>
-                <p className="flex justify-center">Mobile : 9182736450</p>
-            </div>
-            <div className="mt-8 mb-8">
-                <p className="flex justify-center underline text-2xl">TIMINGS</p>
-                <p className="flex justify-center">   Sun    : 9:00 AM - 6:00 PM</p>
-                <p className="flex justify-center">Mon - Fri : 8:00 AM - 7:00 PM</p>
-                <p className="flex justify-center">   Sat    : 9:00 AM - 6:00 PM</p>
-            </div>
-            <div className="mt-8 mb-8">
-                <p className="flex justify-center underline text-2xl">ADDRESS</p>
-                <p className="flex justify-center">IIT DHARWAD Permanent Campus</p>
-                <p className="flex justify-center">Dharwad , Belur Dist</p>
-                <p className="flex justify-center">karnataka , INDIA .</p>
-            </div>
-          </div>
-        </div>
+    <>
+  <meta charSet="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home-Page</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossOrigin="anonymous"
+    referrerPolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="HomePage.css" />
+  <header>
+    <div className="navbar ">
+      <p className=" text-semibold text-2xl">Library Management System</p>
+      <div className="nav-cart border">
+        <a  href="/login">
+          <i className="fa-solid fa-calendar-days" style={{ color: "white" }} />
+        </a>
+      </div>
+      <div className="">
+                <a
+                  className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
+                  href="/login"
+                >
+                  Login
+                </a>
+              </div>
     </div>
+
+  </header>
+  <div className="bodyPart">
+    <div className="quote">
+      <p id="line">Education is for improving the lives of others</p>
+      <p id="line">and for leaving your community and</p>
+      <p id="line">would better than you find it .</p>
+      <p
+        id="authour"
+        style={{ fontSize: "1.5rem", margin: "2rem 0rem 0rem 70rem" }}
+      >
+        - Marian Wright Edelman
+      </p>
+    </div>
+  </div>
+  <footer>
+    <div className="foot-panel1">Back to Top</div>
+    <div className="foot-panel2">
+      <ul>
+        <p>Contact Us</p>
+        <p>Email : abcd@iitdh.ac.in</p>
+        <p>Mobile : 9182736450</p>
+      </ul>
+      <ul>
+        <p>TIMINGS</p>
+        <p>Sun : 9:00 AM - 6:00 PM</p>
+        <p>Mon - Fri : 8:00 AM - 7:00 PM</p>
+        <p>Sat : 9:00 AM - 6:00 PM</p>
+      </ul>
+      <ul>
+        <p>ADDRESS</p>
+        <p>IIT DHARWAD Permanent Campus</p>
+        <p>Dharwad , Belur Dist</p>
+        <p>karnataka , INDIA .</p>
+      </ul>
+      <ul>
+        <p>STAY CONNECTED</p>
+        <i className="fa-brands fa-facebook" />
+        <i className="fa-brands fa-linkedin" />
+        <i className="fa-brands fa-instagram" />
+        <i className="fa-brands fa-twitter" />
+      </ul>
+    </div>
+    <div className="foot-panel3">
+      <div className="logo" />
+    </div>
+    <div className="foot-panel4">
+      <div className="copyright">
+        © 2024 ABC Public Library. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+</>
   )
 }
 
-export default Login
+export default homePage;
