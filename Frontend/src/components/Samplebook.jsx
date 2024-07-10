@@ -78,10 +78,10 @@ function Freebook() {
 
         <div>
           <Slider {...settings}>
-          {list.map((index) => (
+          {/* {list.map((index) => (
                 <Cards index={index} /> 
               
-            ))}
+            ))} */}
             {filterData1.map((item) => (
                 <Cards item={item} key={item.id}/> 
               

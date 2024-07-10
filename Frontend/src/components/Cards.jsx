@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 
-function Cards({item,index}) {
+function Cards({item}) {
     console.log(Cards);
   return (
     <>
-    <Link key={index} to={`/book/${index}`}>
+    {/* <Link key={index} to={`/book/${index}`}> */}
     <div mt-4 my-3 p-3>
     <div className="card bg-base-100 w-92 shadow-xl hover:scale-105 duaration-200 dark:bg-slate-1000 dark:text-white">
   <figure className="h-">
@@ -28,7 +28,7 @@ function Cards({item,index}) {
   </div>
 </div>
     </div>
-    </Link>
+    {/* </Link> */}
     </>
   )
 }

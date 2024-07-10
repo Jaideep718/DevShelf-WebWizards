@@ -5,6 +5,10 @@ import list from "../../public/list.json";
 
 
 function Books() {
+
+  const goToBtn=() => {
+    window.scrollTo({top:0, left:0, behavior: "smooth"});
+  }
     const allBooks= list;
   return (
     <>
@@ -48,7 +52,7 @@ function Books() {
       <Samplebook/>
       </div>
       <footer>
-    <div className="foot-panel1">Back to Top</div>
+    <div className="foot-panel1 cursor-pointer" onClick={goToBtn}>Back to Top</div>
     <div className="foot-panel2">
       <ul>
         <p>Contact Us</p>
