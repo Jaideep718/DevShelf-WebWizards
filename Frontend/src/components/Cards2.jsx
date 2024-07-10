@@ -23,11 +23,14 @@ function Cards({ item }) {
             <p>Genre: {item.genre}</p> 
             <p>Department: {item.department}</p>
             <p>Vendor: {item.vendor}</p>
+            <p>Vendor_id: {item.vendor_id}</p>
             <p>Publisher: {item.publisher}</p>
+            <p>Publisher_id: {item.publisher_id}</p>
             
             <div className="card-actions justify-between">
               <div className="cursor-pointer px-2 py-1 rounded-full border-[2px] hover:text-white duration-200">Count: {item.count}</div>
               <div className="cursor-pointer px-2 py-1 rounded-full border-[2px] hover:bg-blue-500 hover:text-white duration-200">Issue Now</div>
+              <div className="cursor-pointer px-2 py-1 rounded-full border-[2px] hover:bg-blue-500 hover:text-white duration-200">Return Now</div>
             </div>
           </div>
         </div>
