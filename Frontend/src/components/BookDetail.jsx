@@ -42,7 +42,9 @@ function BookDetails() {
       <p className='text-2xl'>Department: {book.department}</p><br />
       <p className='text-2xl'>Count: {book.count}</p><br />
       <p className='text-2xl'>Vendor: {book.vendor}</p><br />
+      <p className='text-2xl'>Vendor Id: {book.vendor_id}</p><br />
       <p className='text-2xl'>Publisher: {book.publisher}</p><br />
+      <p className='text-2xl'>Publisher Id: {book.publisher_id}</p><br />
       <button className="bg-black text-white px-3 py-2 rounded-md hover:bg-blue-800 duration-300 cursor-pointer">Borrow Book</button><br /><br />
       <button className="bg-black text-white px-3 py-2 rounded-md hover:bg-blue-800 duration-300 cursor-pointer">Return Book</button>
     </div>
