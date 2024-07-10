@@ -35,14 +35,16 @@ function BookDetails() {
 
   return (
     <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 mt-4">
-      <h1 className="font-semibold text-2xl">{book.title}</h1>
-      <p>{book.description}</p>
-      <p>Author: {book.author}</p>
-      <p>Genre: {book.genre}</p>
-      <p>Department: {book.department}</p>
-      <p>Count: {book.count}</p>
-      <p>Vendor: {book.vendor}</p>
-      <p>Publisher: {book.publisher}</p>
+      <h1 className="font-semibold text-4xl">{book.title}</h1><br />
+      <p className='text-3xl'>{book.description}</p><br />
+      <p className='text-2xl'>Author : {book.author}</p><br />
+      <p className='text-2xl'>Genre: {book.genre}</p><br />
+      <p className='text-2xl'>Department: {book.department}</p><br />
+      <p className='text-2xl'>Count: {book.count}</p><br />
+      <p className='text-2xl'>Vendor: {book.vendor}</p><br />
+      <p className='text-2xl'>Publisher: {book.publisher}</p><br />
+      <button className="bg-black text-white px-3 py-2 rounded-md hover:bg-blue-800 duration-300 cursor-pointer">Borrow Book</button><br /><br />
+      <button className="bg-black text-white px-3 py-2 rounded-md hover:bg-blue-800 duration-300 cursor-pointer">Return Book</button>
     </div>
   );
 }
