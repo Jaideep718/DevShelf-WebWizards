@@ -14,7 +14,7 @@ function Cards({ item }) {
               alt="Books"
             />
           </figure>
-          <div className="card-body">
+          <div className="card-body ml-20">
             <h2 className="card-title text-bold">
               {item.title}
             </h2>
