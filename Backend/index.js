@@ -66,14 +66,18 @@ app.post('/login', async (req, res) => {
 
 // Add a route to fetch all books
 app.get('/books', async (req, res) => {
+  const { department } = req.query;
   try {
-    const books = await Book.find();
+    // const books = await Book.find();
+    const books = await Book.find({ department: department });
     res.status(200).json(books);
   } catch (error) {
     console.error('Error fetching books:', error);
     res.status(500).send('Error fetching books');
   }
 });
+
+
 
 // Add a route to fetch a book by title
 app.get('/book', async (req, res) => {
