@@ -22,14 +22,19 @@ function Books() {
       <link rel="stylesheet" href="HomePage.css" />
 
       <div className="navbar">
-        <p className=" text-semibold text-2xl">Library Management System</p>
-        <div className="nav-search border2">
+        <p className=" text-bold text-xl">Library Management System</p>
+        <form className="relative">
+          <input type="search" placeholder="Type here" className="w-full md:w-80 p-4 rounded-full bg-slate-800 text-white focus:outline-none"/> 
+          <button className="absolute right-1 top-1/2 -translate-y-1/2 p-3 bg-slate-900 rounded-full hover:bg-slate-700 transition-transform transform hover:scale-105 shadow-lg"><i className="fa-solid fa-magnifying-glass" /></button>
+        </form>
+
+        {/* <div className="nav-search border2">
           <input placeholder="Search Book" className="search-input" />
           <div className="search-icon">
             <i className="fa-solid fa-magnifying-glass" />
           </div>
-        </div>
-        <div className="nav-cart border">
+        </div> */}
+        {/* <div className="nav-cart border">
           <a
           // onClick={() =>
           //             document.getElementById("my_modal_3").showModal()
@@ -40,7 +45,7 @@ function Books() {
               style={{ color: "white" }}
             />
           </a>
-        </div>
+        </div> */}
 
         <div className="">
           <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer">

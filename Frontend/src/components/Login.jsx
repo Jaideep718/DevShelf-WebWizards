@@ -23,11 +23,11 @@ function homePage() {
   <header>
     <div className="navbar ">
       <p className=" text-semibold text-2xl">Library Management System</p>
-      <div className="nav-cart border">
+      {/* <div className="nav-cart border">
         <a  href="/login">
           <i className="fa-solid fa-calendar-days" style={{ color: "white" }} />
         </a>
-      </div>
+      </div> */}
       <div className="">
                 <a
                   className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
