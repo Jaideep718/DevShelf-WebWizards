@@ -48,7 +48,7 @@ function Books() {
         </form>
 
         <div className="">
-          <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer">
+          <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer" href="/">
             Logout
           </a>
         </div>
