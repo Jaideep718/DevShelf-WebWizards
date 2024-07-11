@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Samplebook from "../components/Samplebook.jsx";
 import "../components/HomePage.css";
+import toast, { Toaster } from "react-hot-toast";
 
 function Books() {
   const navigate = useNavigate();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const goToBtn = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -16,6 +17,15 @@ function Books() {
     if (searchTerm.trim()) {
       navigate(`/book/${encodeURIComponent(searchTerm.trim())}`);
     }
+  };
+
+  // const notify = () => {
+  //   toast.success("Logout Successful", { duration: 5000 });
+  // };
+
+  const notify = () => {
+    toast.success("Logout Successful", { duration: 1000 });
+    navigate("/");
   };
 
   return (
@@ -48,8 +58,12 @@ function Books() {
         </form>
 
         <div className="">
-          <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer" href="/">
+          <a
+            className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
+            onClick={notify}
+          >
             Logout
+            <Toaster />
           </a>
         </div>
       </div>

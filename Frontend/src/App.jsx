@@ -5,6 +5,7 @@ import LoginPage from './components/LoginPage';
 import Signup from './components/signUp';
 import BookDetails from './components/BookDetail';
 import Books from './components/Books';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/books" element={<Books />} />
         <Route path="/book/:title" element={<BookDetails />} />
       </Routes>
+      <Toaster />
     </>
   );
 }

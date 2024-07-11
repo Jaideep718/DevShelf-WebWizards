@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -13,10 +14,12 @@ const Signup = () => {
     try {
       console.log('Sending data:', { username, email, password });
       await axios.post('http://localhost:5000/signup', { username, email, password });
-      alert('User registered successfully');
+      toast.success("User registered successfully", { duration: 1000 });
+      // alert('User registered successfully');
       navigate('/login');
     } catch (error) {
-      alert('Error register user');
+      // alert('Error register user');
+      toast.error("Error register user",{ duration: 2000 });
     }
   };
 
