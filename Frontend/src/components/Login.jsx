@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "../components/HomePage.css";
 
 
 function homePage() {
+
+  const element = document.documentElement;
+  const [sticky, setSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setSticky(true);
+      } else {
+        setSticky(false);
+      }
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.addEventListener("scroll", handleScroll);
+      };
+    };
+  }, []);
 
   const goToBtn=() => {
     window.scrollTo({top:0, left:0, behavior: "smooth"});
@@ -21,7 +38,11 @@ function homePage() {
   />
   <link rel="stylesheet" href="HomePage.css" />
   <header>
-    <div className="navbar ">
+    <div className={`navbar max-w-screem-2x1 container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-50  ${
+          sticky
+            ? "sticky nav-bar shadow-md bg-base-200 duration-300 transition-all ease-in-out"
+            : "bg-custom-bg-color"
+        }`}>
       <p className=" text-semibold text-2xl">Library Management System</p>
       {/* <div className="nav-cart border">
         <a  href="/login">
@@ -39,7 +60,7 @@ function homePage() {
     </div>
 
   </header>
-  <div className="bodyPart">
+  <div className="bodyPart mt-16">
     <div className="quote">
       <p id="line">Education is for improving the lives of others</p>
       <p id="line">and for leaving your community and</p>
