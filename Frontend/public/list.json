@@ -9,7 +9,8 @@
       "vendor": "Indian Book Depot",
       "vendor_id": 1003,
       "publisher": "Lpringer Nature",
-      "publisher_id": 234567
+      "publisher_id": 234567,
+      "img":"https://rukminim2.flixcart.com/image/850/1000/kkcwo7k0/book/k/n/b/introduction-to-algorithms-original-imafzpgdpkm33t9s.jpeg?q=90&crop=false"
     },
     {
       "title": "Artificial Intelligence: A Modern Approach",
@@ -21,7 +22,8 @@
       "vendor": "Kitab Mahal",
       "vendor_id": 1004,
       "publisher": "KarperMollins Publishers",
-      "publisher_id": 345678
+      "publisher_id": 345678,
+      "img":"https://m.media-amazon.com/images/I/61-6TTTBZeL._AC_UF1000,1000_QL80_.jpg"
     },
     {
       "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
@@ -33,7 +35,8 @@
       "vendor": "Indian Book Depot",
       "vendor_id": 1003,
       "publisher": "Mengage Learning",
-      "publisher_id": 901234
+      "publisher_id": 901234,
+      "img":"https://m.media-amazon.com/images/I/413za4fzZLL.jpg"
     },
     {
       "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
@@ -45,7 +48,8 @@
       "vendor": "Amazon India",
       "vendor_id": 1006,
       "publisher": "Lpringer Nature",
-      "publisher_id": 234567
+      "publisher_id": 234567,
+      "img":"https://m.media-amazon.com/images/I/51nL96Abi1L.jpg"
     },
     {
       "title": "The Pragmatic Programmer: Your Journey to Mastery",
@@ -57,7 +61,8 @@
       "vendor": "Kitab Mahal",
       "vendor_id": 1004,
       "publisher": "JarperCollins Publishers",
-      "publisher_id": 123456
+      "publisher_id": 123456,
+      "img":""
     },
     {
       "title": "Code Complete: A Practical Handbook of Software Construction",

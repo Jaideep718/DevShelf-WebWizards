@@ -100,6 +100,74 @@ app.get('/book', async (req, res) => {
   }
 });
 
+// app.get('/book', async (req, res) => {
+//   const { title } = req.query; // Get the title from query parameters
+//   console.log(`Received request for book with title: ${title}`); // Log the title
+//   try {
+//     const decodedTitle = decodeURIComponent(title); // Decode the title
+//     console.log(`Decoded title: ${decodedTitle}`); // Log the decoded title
+
+//     // Create a case-insensitive regular expression for the title
+//     const caseInsensitiveTitle = new RegExp(`^${decodedTitle}$`, 'i');
+//     console.log(decodedTitle);
+
+//     const book = await Book.findOne({ title: caseInsensitiveTitle });
+//     if (book) {
+//       console.log(`Book found: ${book.title}`); // Log the book found
+//       res.status(200).json(book);
+//     } else {
+//       console.log('Book not found'); // Log if book is not found
+//       res.status(404).json({ message: 'Book not found' });
+//     }
+//   } catch (error) {
+//     console.error('Error fetching book:', error);
+//     res.status(500).send('Error fetching book');
+//   }
+// });
+
+// app.get('/book', async (req, res) => {
+//   const { title } = req.query; // Get the title from query parameters
+//   console.log(`Received request for book with title: ${title}`); // Log the title
+//   try {
+//     const decodedTitle = decodeURIComponent(title); // Decode the title
+//     console.log(`Decoded title: ${decodedTitle}`); // Log the decoded title
+//     // Case-sensitive search using regex without 'i' flag
+//     const book = await Book.findOne({ title: { $regex: new RegExp(`^${decodedTitle}$`) } });
+//     if (book) {
+//       console.log(`Book found: ${book.title}`); // Log the book found
+//       res.status(200).json(book);
+//     } else {
+//       console.log('Book not found'); // Log if book is not found
+//       res.status(404).json({ message: 'Book not found' });
+//     }
+//   } catch (error) {
+//     console.error('Error fetching book:', error);
+//     res.status(500).send('Error fetching book');
+//   }
+// });
+
+// app.get('/book', async (req, res) => {
+//   const { title } = req.query;
+//   console.log(`Received request for book with title: ${title}`);
+//   try {
+//     const decodedTitle = decodeURIComponent(title);
+//     console.log(`Decoded title: ${decodedTitle}`);
+
+//     // Case-insensitive search using regex with 'i' flag
+//     const book = await Book.findOne({ title: new RegExp(`^${decodedTitle}$`, 'i') });
+//     if (book) {
+//       console.log(`Book found: ${book.title}`);
+//       res.status(200).json(book);
+//     } else {
+//       console.log('Book not found');
+//       res.status(404).json({ message: 'Book not found' });
+//     }
+//   } catch (error) {
+//     console.error('Error fetching book:', error);
+//     res.status(500).send('Error fetching book');
+//   }
+// });
+
 // Start the server
 const PORT = 5000;
 app.listen(PORT, () => {
