@@ -18,7 +18,7 @@ const Login = () => {
       });
       if (response.data.success) {
         // alert("Logged in successfully");
-        toast.success("Loggedin successfully", { duration: 1000 });
+        toast.success("Loggedin successfully", { duration: 1500 });
         navigate("/books");
         
       } else {

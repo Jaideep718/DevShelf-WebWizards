@@ -66,7 +66,7 @@ function Books() {
   // };
 
   const notify = () => {
-    toast.success("Logout Successful", { duration: 1000 });
+    toast.success("Logout Successful", { duration: 1500 });
     navigate("/");
   };
 

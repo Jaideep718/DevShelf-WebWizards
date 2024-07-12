@@ -30,7 +30,7 @@ function Cards({ item }) {
             
             <div className="card-actions justify-between">
               <div className="cursor-pointer px-2 py-1 rounded-full border-[2px] hover:text-white duration-200">Count: {item.count}</div>
-              <div className="cursor-pointer px-2 py-1 rounded-full border-[2px] hover:bg-blue-500 hover:text-white duration-200">Issue Now</div>
+              <div className="cursor-pointer px-2 py-1 rounded-full border-[2px] hover:bg-blue-500 hover:text-white duration-200"><Link to={`/issue/${encodedTitle}`}>Issue Now</Link></div>
               <div className="cursor-pointer px-2 py-1 rounded-full border-[2px] hover:bg-blue-500 hover:text-white duration-200">Return Now</div>
             </div>
           </div>

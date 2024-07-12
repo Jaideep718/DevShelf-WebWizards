@@ -100,6 +100,35 @@ app.get('/book', async (req, res) => {
   }
 });
 
+app.post('/issue', async (req, res) => {
+  const { title, issueDate, dueDate } = req.body;
+
+  try {
+    // Find the book by title and decrement the count
+    const book = await Book.findOne({ title: decodeURIComponent(title) });
+    if (!book) {
+      return res.status(404).send('Book not found');
+    }
+
+    if (book.count <= 0) {
+      return res.status(400).send('No copies left to issue');
+    }
+
+    // Decrement the book count
+    book.count -= 1;
+    await book.save();
+
+    // Here you can save the issue record to a database if needed
+    // For example:
+    // const issueRecord = new IssueRecord({ title, issueDate, dueDate, userId: req.userId });
+    // await issueRecord.save();
+
+    res.status(200).send('Book issued successfully');
+  } catch (error) {
+    console.error('Error issuing book:', error);
+    res.status(500).send('Error issuing book');
+  }
+});
 // app.get('/book', async (req, res) => {
 //   const { title } = req.query; // Get the title from query parameters
 //   console.log(`Received request for book with title: ${title}`); // Log the title
