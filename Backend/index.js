@@ -174,7 +174,7 @@ app.post('/issue', async (req, res) => {
 });
 
 
-
+/*
 app.post('/return', async (req, res) => {
   const { title } = req.body;
 
@@ -192,7 +192,44 @@ app.post('/return', async (req, res) => {
     console.error('Error returning book:', error);
     res.status(500).send('Error returning book');
   }
+});*/
+
+app.post('/return', async (req, res) => {
+  const { title, email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    const bookIndex = user.borrowedBooks.findIndex(book => book.title === title);
+    if (bookIndex === -1) {
+      return res.status(400).send('Book not found in user borrowed list');
+    }
+
+    // Remove the book from user's borrowed list
+    user.borrowedBooks.splice(bookIndex, 1);
+    await user.save();
+
+    const book = await Book.findOne({ title: decodeURIComponent(title) });
+    if (!book) {
+      return res.status(404).send('Book not found');
+    }
+
+    // Increment the book count
+    book.count += 1;
+    await book.save();
+
+    res.status(200).send('Book returned successfully');
+  } catch (error) {
+    console.error('Error returning book:', error);
+    res.status(500).send('Error returning book');
+  }
 });
+
+
+
 // Start the server
 const PORT = 5000;
 app.listen(PORT, () => {
