@@ -2,6 +2,7 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Cards({ item }) {
   const encodedTitle = encodeURIComponent(item.title);
