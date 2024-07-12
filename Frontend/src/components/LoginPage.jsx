@@ -103,6 +103,7 @@ export default Login;*/
 
 
 
+
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -122,7 +123,7 @@ const Login = () => {
         password,
       });
       if (response.data.success) {
-        localStorage.setItem("email", email); // Store email in local storage
+        localStorage.setItem("email", email); // Store email in localStorage
         toast.success("Logged in successfully", { duration: 1500 });
         navigate("/books");
       } else {
