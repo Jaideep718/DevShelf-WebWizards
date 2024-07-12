@@ -15,10 +15,23 @@ mongoose.connection.once('open', () => {
 });
 
 // User schema
+// const userSchema = new mongoose.Schema({
+//   username: String,
+//   email: String,
+//   password: String,
+//   //issuedBooks: [String],
+// });
+
+// User schema
 const userSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: String,
+  borrowedBooks: [{
+    title: String,
+    issueDate: Date,
+    dueDate: Date
+  }]
 });
 
 const User = mongoose.model('User', userSchema);
@@ -65,18 +78,6 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Add a route to fetch all books
-// app.get('/books', async (req, res) => {
-//   const { department } = req.query;
-//   try {
-//     // const books = await Book.find();
-//     const books = await Book.find({ department: department });
-//     res.status(200).json(books);
-//   } catch (error) {
-//     console.error('Error fetching books:', error);
-//     res.status(500).send('Error fetching books');
-//   }
-// });
 app.get('/books', async (req, res) => {
   const { department } = req.query;
   try {
@@ -88,19 +89,6 @@ app.get('/books', async (req, res) => {
     res.status(500).send('Error fetching books');
   }
 });
-// const router = express.Router();
-// router.get('/books', async (req, res) => {
-//   // const { department } = req.query;
-//   try {
-//     const books = await Book.find();
-//     // const books = await Book.find({ department: department });
-//     res.status(200).json(books);
-//   } catch (error) {
-//     console.error('Error fetching books:', error);
-//     res.status(500).send('Error fetching books');
-//   }
-// });
-
 
 // Add a route to fetch a book by title
 app.get('/book', async (req, res) => {
@@ -123,7 +111,7 @@ app.get('/book', async (req, res) => {
   }
 });
 
-app.post('/issue', async (req, res) => {
+/*app.post('/issue', async (req, res) => {
   const { title, issueDate, dueDate } = req.body;
 
   try {
@@ -132,7 +120,39 @@ app.post('/issue', async (req, res) => {
     if (!book) {
       return res.status(404).send('Book not found');
     }
-    console.log(`Book found: ${book.title}, current count: ${book.count}`);
+
+    if (book.count <= 0) {
+      return res.status(400).send('No copies left to issue');
+    }
+
+    // Decrement the book count
+    book.count -= 1;
+    await book.save();
+    res.status(200).send('Book issued successfully');
+  } catch (error) {
+    console.error('Error issuing book:', error);
+    res.status(500).send('Error issuing book');
+  }
+});*/
+
+app.post('/issue', async (req, res) => {
+  const { title, email, issueDate, dueDate } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    const alreadyBorrowed = user.borrowedBooks.some(book => book.title === title);
+    if (alreadyBorrowed) {
+      return res.status(400).send('Book already borrowed');
+    }
+
+    const book = await Book.findOne({ title: decodeURIComponent(title) });
+    if (!book) {
+      return res.status(404).send('Book not found');
+    }
 
     if (book.count <= 0) {
       return res.status(400).send('No copies left to issue');
@@ -142,10 +162,9 @@ app.post('/issue', async (req, res) => {
     book.count -= 1;
     await book.save();
 
-    // Here you can save the issue record to a database if needed
-    // For example:
-    // const issueRecord = new IssueRecord({ title, issueDate, dueDate, userId: req.userId });
-    // await issueRecord.save();
+    // Add the book to the user's borrowed books
+    user.borrowedBooks.push({ title, issueDate, dueDate });
+    await user.save();
 
     res.status(200).send('Book issued successfully');
   } catch (error) {
@@ -153,6 +172,8 @@ app.post('/issue', async (req, res) => {
     res.status(500).send('Error issuing book');
   }
 });
+
+
 
 app.post('/return', async (req, res) => {
   const { title } = req.body;
@@ -172,104 +193,6 @@ app.post('/return', async (req, res) => {
     res.status(500).send('Error returning book');
   }
 });
-
-// app.post('/return', async (req, res) => {
-//   const { title, issueDate, dueDate } = req.body;
-
-//   try {
-//     // Find the book by title and decrement the count
-//     const book = await Book.findOne({ title: decodeURIComponent(title) });
-//     if (!book) {
-//       return res.status(404).send('Book not found');
-//     }
-
-//     if (book.count <= 0) {
-//       return res.status(400).send('No copies left to issue');
-//     }
-
-//     // Decrement the book count
-//     book.count -= 1;
-//     await book.save();
-
-//     // Here you can save the issue record to a database if needed
-//     // For example:
-//     // const issueRecord = new IssueRecord({ title, issueDate, dueDate, userId: req.userId });
-//     // await issueRecord.save();
-
-//     res.status(200).send('Book issued successfully');
-//   } catch (error) {
-//     console.error('Error issuing book:', error);
-//     res.status(500).send('Error issuing book');
-//   }
-// });
-// app.get('/book', async (req, res) => {
-//   const { title } = req.query; // Get the title from query parameters
-//   console.log(`Received request for book with title: ${title}`); // Log the title
-//   try {
-//     const decodedTitle = decodeURIComponent(title); // Decode the title
-//     console.log(`Decoded title: ${decodedTitle}`); // Log the decoded title
-
-//     // Create a case-insensitive regular expression for the title
-//     const caseInsensitiveTitle = new RegExp(`^${decodedTitle}$`, 'i');
-//     console.log(decodedTitle);
-
-//     const book = await Book.findOne({ title: caseInsensitiveTitle });
-//     if (book) {
-//       console.log(`Book found: ${book.title}`); // Log the book found
-//       res.status(200).json(book);
-//     } else {
-//       console.log('Book not found'); // Log if book is not found
-//       res.status(404).json({ message: 'Book not found' });
-//     }
-//   } catch (error) {
-//     console.error('Error fetching book:', error);
-//     res.status(500).send('Error fetching book');
-//   }
-// });
-
-// app.get('/book', async (req, res) => {
-//   const { title } = req.query; // Get the title from query parameters
-//   console.log(`Received request for book with title: ${title}`); // Log the title
-//   try {
-//     const decodedTitle = decodeURIComponent(title); // Decode the title
-//     console.log(`Decoded title: ${decodedTitle}`); // Log the decoded title
-//     // Case-sensitive search using regex without 'i' flag
-//     const book = await Book.findOne({ title: { $regex: new RegExp(`^${decodedTitle}$`) } });
-//     if (book) {
-//       console.log(`Book found: ${book.title}`); // Log the book found
-//       res.status(200).json(book);
-//     } else {
-//       console.log('Book not found'); // Log if book is not found
-//       res.status(404).json({ message: 'Book not found' });
-//     }
-//   } catch (error) {
-//     console.error('Error fetching book:', error);
-//     res.status(500).send('Error fetching book');
-//   }
-// });
-
-// app.get('/book', async (req, res) => {
-//   const { title } = req.query;
-//   console.log(`Received request for book with title: ${title}`);
-//   try {
-//     const decodedTitle = decodeURIComponent(title);
-//     console.log(`Decoded title: ${decodedTitle}`);
-
-//     // Case-insensitive search using regex with 'i' flag
-//     const book = await Book.findOne({ title: new RegExp(`^${decodedTitle}$`, 'i') });
-//     if (book) {
-//       console.log(`Book found: ${book.title}`);
-//       res.status(200).json(book);
-//     } else {
-//       console.log('Book not found');
-//       res.status(404).json({ message: 'Book not found' });
-//     }
-//   } catch (error) {
-//     console.error('Error fetching book:', error);
-//     res.status(500).send('Error fetching book');
-//   }
-// });
-
 // Start the server
 const PORT = 5000;
 app.listen(PORT, () => {
