@@ -137,7 +137,7 @@ function IssueBook() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-12 p-6 border border-gray-300 rounded-lg bg-gray-100 ">
+    <div className="max-w-2xl mx-auto mt-12 p-6 border border-gray-300 rounded-lg bg-custom-bg-color ">
       <h1 className="text-3xl font-bold mb-5 text-center">Issue Book</h1>
       {isIssued ? (
         <div className="text-center text-green-500">
@@ -158,13 +158,14 @@ function IssueBook() {
           <p>
             <strong>Description:</strong> {book.description}
           </p>
-          <label htmlFor="issueDate" className="mb-1">
+          <label htmlFor="issueDate" className="mb-1 mt-4">
             Issue Date:
           </label>
           <input
             type="date"
             id="issueDate"
             value={issueDate}
+            readOnly
             onChange={(e) => setIssueDate(e.target.value)}
             className="mb-5 p-2 border border-gray-300 rounded"
             required
@@ -181,7 +182,7 @@ function IssueBook() {
           />
           <button
             type="submit"
-            className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300"
+            className="py-2 px-4 bg-blue-400 text-white rounded hover:bg-blue-500 hover:text-white transition duration-200"
             onClick={notify}
           >
             Issue Book

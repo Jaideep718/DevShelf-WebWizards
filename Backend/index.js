@@ -37,6 +37,7 @@ const bookSchema = new mongoose.Schema({
 
 const Book = mongoose.model('Book', bookSchema);
 
+
 // Routes
 app.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
@@ -65,18 +66,40 @@ app.post('/login', async (req, res) => {
 });
 
 // Add a route to fetch all books
+// app.get('/books', async (req, res) => {
+//   const { department } = req.query;
+//   try {
+//     // const books = await Book.find();
+//     const books = await Book.find({ department: department });
+//     res.status(200).json(books);
+//   } catch (error) {
+//     console.error('Error fetching books:', error);
+//     res.status(500).send('Error fetching books');
+//   }
+// });
 app.get('/books', async (req, res) => {
   const { department } = req.query;
   try {
-    // const books = await Book.find();
-    const books = await Book.find({ department: department });
+    const query = department ? { department: department } : {};
+    const books = await Book.find(query);
     res.status(200).json(books);
   } catch (error) {
     console.error('Error fetching books:', error);
     res.status(500).send('Error fetching books');
   }
 });
-
+// const router = express.Router();
+// router.get('/books', async (req, res) => {
+//   // const { department } = req.query;
+//   try {
+//     const books = await Book.find();
+//     // const books = await Book.find({ department: department });
+//     res.status(200).json(books);
+//   } catch (error) {
+//     console.error('Error fetching books:', error);
+//     res.status(500).send('Error fetching books');
+//   }
+// });
 
 
 // Add a route to fetch a book by title
@@ -101,6 +124,36 @@ app.get('/book', async (req, res) => {
 });
 
 app.post('/issue', async (req, res) => {
+  const { title, issueDate, dueDate } = req.body;
+
+  try {
+    // Find the book by title and decrement the count
+    const book = await Book.findOne({ title: decodeURIComponent(title) });
+    if (!book) {
+      return res.status(404).send('Book not found');
+    }
+
+    if (book.count <= 0) {
+      return res.status(400).send('No copies left to issue');
+    }
+
+    // Decrement the book count
+    book.count -= 1;
+    await book.save();
+
+    // Here you can save the issue record to a database if needed
+    // For example:
+    // const issueRecord = new IssueRecord({ title, issueDate, dueDate, userId: req.userId });
+    // await issueRecord.save();
+
+    res.status(200).send('Book issued successfully');
+  } catch (error) {
+    console.error('Error issuing book:', error);
+    res.status(500).send('Error issuing book');
+  }
+});
+
+app.post('/return', async (req, res) => {
   const { title, issueDate, dueDate } = req.body;
 
   try {
