@@ -11,6 +11,7 @@ import IssueBook from './components/IssueBook';
 function App() {
   return (
     <>
+    <Toaster />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<LoginPage />} />
@@ -20,7 +21,7 @@ function App() {
         <Route path="/issue/:title" element={<IssueBook />} />
 
       </Routes>
-      <Toaster />
+      
     </>
   );
 }

@@ -1,8 +1,34 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Cards({ item }) {
   const encodedTitle = encodeURIComponent(item.title);
+  const navigate = useNavigate();
+
+  // const notify = () => { 
+  //     toast.success("Book successfully Returned!", { duration: 2000 });
+  //     navigate("/books");
+  //   };
+  // const notify = () => { 
+  //   toast.success("Book successfully Returned!", { duration: 1500 });
+  //   setTimeout(() => {
+  //     navigate("/books");
+  //   }, 1500); // Delay navigation by 2 seconds to match the duration of the toast
+  // };
+  const notify = async () => {
+    try {
+      await axios.post('http://localhost:5000/return', { title: item.title });
+      toast.success("Book successfully Returned!", { duration: 1500 });
+      setTimeout(() => {
+        navigate("/books");
+      }, 1500);
+    } catch (error) {
+      console.error("Error returning book:", error);
+      toast.error("Error returning book");
+    }
+  };
 
   return (
     <Link to={`/book/${encodedTitle}`}>
@@ -31,7 +57,7 @@ function Cards({ item }) {
             <div className="card-actions justify-between">
               <div className="cursor-pointer px-2 py-1 rounded-full border-[2px] hover:text-white duration-200">Count: {item.count}</div>
               <div className="cursor-pointer px-2 py-1 rounded-full border-[2px] hover:bg-blue-500 hover:text-white duration-200"><Link to={`/issue/${encodedTitle}`}>Issue Now</Link></div>
-              <div className="cursor-pointer px-2 py-1 rounded-full border-[2px] hover:bg-blue-500 hover:text-white duration-200">Return Now</div>
+              <div className="cursor-pointer px-2 py-1 rounded-full border-[2px] hover:bg-blue-500 hover:text-white duration-200" onClick={notify}>Return Now</div>
             </div>
           </div>
         </div>

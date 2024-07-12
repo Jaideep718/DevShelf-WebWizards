@@ -79,12 +79,18 @@ function IssueBook() {
   const handleIssueBook = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/issue", {
+      // await axios.post("/issue", {
+        const response = await axios.post("http://localhost:5000/issue", {
         title: decodeURIComponent(title),
         issueDate,
         dueDate,
       });
+      console.log("Issue Book Response:", response.data);
       setIsIssued(true);
+      toast.success("Book successfully issued", { duration: 2000 });
+      setTimeout(() => {
+        navigate("/books");
+      }, 2000);
       //   setTimeout(() => {
       //     history.push('/');
       //   }, 3000); // Redirect to home after 3 seconds
@@ -131,10 +137,10 @@ function IssueBook() {
   //     )}
   //   </div>
   // );
-  const notify = () => {
-    toast.success("Book successfully issued", { duration: 2000 });
-    navigate("/books");
-  };
+  // const notify = () => {
+  //   toast.success("Book successfully issued", { duration: 2000 });
+  //   navigate("/books");
+  // };
 
   return (
     <div className="max-w-2xl mx-auto mt-12 p-6 border border-gray-300 rounded-lg bg-custom-bg-color ">
@@ -142,7 +148,7 @@ function IssueBook() {
       {isIssued ? (
         <div className="text-center text-green-500">
           <p>Book successfully issued!</p>
-          <p>You will be redirected to the home page shortly.</p>
+          <p>You will be redirected to the Books page shortly.</p>
         </div>
       ) : (
         <form onSubmit={handleIssueBook} className="flex flex-col">
@@ -183,7 +189,7 @@ function IssueBook() {
           <button
             type="submit"
             className="py-2 px-4 bg-blue-400 text-white rounded hover:bg-blue-500 hover:text-white transition duration-200"
-            onClick={notify}
+            // onClick={notify}
           >
             Issue Book
             <Toaster />
