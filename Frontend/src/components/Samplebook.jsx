@@ -174,7 +174,8 @@ function Samplebook() {
   useEffect(() => {
     const getBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/books");
+        // const res = await axios.get("http://localhost:5000/books");
+        const res = await axios.get("https://devshelf-webwizards-backend.onrender.com/books");
         setBooks(res.data);
       } catch (error) {
         console.log(error);
