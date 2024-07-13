@@ -13,7 +13,8 @@ const Signup = () => {
     e.preventDefault();
     try {
       console.log('Sending data:', { username, email, password });
-      await axios.post('http://localhost:5000/signup', { username, email, password });
+      // await axios.post('http://localhost:5000/signup', { username, email, password });
+      await axios.post('https://devshelf-webwizards-backend.onrender.com/signup', { username, email, password });
       toast.success("User registered successfully", { duration: 1500 });
       // alert('User registered successfully');
       navigate('/login');

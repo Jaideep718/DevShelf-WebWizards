@@ -17,7 +17,8 @@ function BookDetails() {
     const fetchBook = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/book?title=${encodeURIComponent(title)}`
+          // `http://localhost:5000/book?title=${encodeURIComponent(title)}`
+           `https://devshelf-webwizards-backend.onrender.com/book?title=${encodeURIComponent(title)}`
         );
         if (res.data) {
           setBook(res.data);
@@ -50,7 +51,8 @@ function BookDetails() {
     const fetchDepartmentBooks = async (department, currentBookTitle) => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/books?department=${encodeURIComponent(department)}`
+          // `http://localhost:5000/books?department=${encodeURIComponent(department)}`
+           `https://devshelf-webwizards-backend.onrender.com/books?department=${encodeURIComponent(department)}`
         );
         if (res.data) {
           const filteredBooks = res.data.filter(book => book.title !== currentBookTitle);

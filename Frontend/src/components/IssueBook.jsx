@@ -144,7 +144,8 @@ function IssueBook() {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/book?title=${encodeURIComponent(title)}`);
+        // const res = await axios.get(`http://localhost:5000/book?title=${encodeURIComponent(title)}`);
+         const res = await axios.get(`https://devshelf-webwizards-backend.onrender.com/book?title=${encodeURIComponent(title)}`);
         if (res.data) {
           setBook(res.data);
           const dueDate = new Date();
@@ -170,7 +171,8 @@ function IssueBook() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/issue", {
+      // const response = await axios.post("http://localhost:5000/issue", {
+      const response = await axios.post("https://devshelf-webwizards-backend.onrender.com/issue", {
         title: decodeURIComponent(title),
         email,
         issueDate,
