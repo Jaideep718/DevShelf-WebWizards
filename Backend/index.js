@@ -4,8 +4,15 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 const app = express();
+
+const corsOptions = {
+  origin: 'https://devshelf-webwizards-front.onrender.com', // Replace with your frontend URL
+  optionsSuccessStatus: 200,
+};
+
 app.use(bodyParser.json());
-app.use(cors());
+// app.use(cors());
+app.use(cors(corsOptions));
 
 mongoose.connect('mongodb://localhost:27017/LMS_Project', { useNewUrlParser: true, useUnifiedTopology: true });
 
