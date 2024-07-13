@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Samplebook from "../components/Samplebook.jsx";
 import "../components/HomePage.css";
 import toast, { Toaster } from "react-hot-toast";
+import api from "../components/axios.js";
 
 function Books() {
   const [book, setBook] = useState([]);
@@ -47,6 +48,19 @@ function Books() {
     //   setFilteredBooks(books); // Reset to original list if search term is empty
     // }
   };
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await api.get('/books'); // Use the axios instance to make API requests
+        setBook(response.data);
+      } catch (error) {
+        console.error('Error fetching books:', error);
+      }
+    };
+
+    fetchBooks();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
