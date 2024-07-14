@@ -1,19 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
-
 function Cards({ item }) {
   const encodedTitle = encodeURIComponent(item.title);
 
-  const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-
   return (
     <Link to={`/book/${encodedTitle}`}>
-      <div className="mt-4 my-3 p-3 " onClick={handleClick}>
+      <div className="mt-4 my-3 p-3">
         <div className="card bg-base-100 w-92 shadow-xl hover:scale-105 duration-200 dark:bg-slate-1000 dark:text-white">
           <figure className="sm:h-60 md:h-72 lg:h-96">
             {/* className="sm:h-60 md:h-72 lg:h-96" */}
