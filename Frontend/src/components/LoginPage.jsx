@@ -105,7 +105,8 @@ export default Login;*/
 
 
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import api from "../components/axios.js";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -119,7 +120,7 @@ const Login = () => {
 
     try {
       // const response = await axios.post("http://localhost:5000/login", {
-      const response = await axios.post("https://devshelf-webwizards-backend.onrender.com/login", {
+      const response = await api.post("https://devshelf-webwizards-backend.onrender.com/login", {
         email,
         password,
       });

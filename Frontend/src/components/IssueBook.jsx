@@ -128,7 +128,8 @@ export default IssueBook;*/
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import api from "../components/axios.js";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -145,7 +146,7 @@ function IssueBook() {
     const fetchBook = async () => {
       try {
         // const res = await axios.get(`http://localhost:5000/book?title=${encodeURIComponent(title)}`);
-         const res = await axios.get(`https://devshelf-webwizards-backend.onrender.com/book?title=${encodeURIComponent(title)}`);
+         const res = await api.get(`https://devshelf-webwizards-backend.onrender.com/book?title=${encodeURIComponent(title)}`);
         if (res.data) {
           setBook(res.data);
           const dueDate = new Date();
@@ -172,7 +173,7 @@ function IssueBook() {
 
     try {
       // const response = await axios.post("http://localhost:5000/issue", {
-      const response = await axios.post("https://devshelf-webwizards-backend.onrender.com/issue", {
+      const response = await api.post("https://devshelf-webwizards-backend.onrender.com/issue", {
         title: decodeURIComponent(title),
         email,
         issueDate,

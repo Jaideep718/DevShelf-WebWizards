@@ -162,7 +162,8 @@
 // export default Samplebook;
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import api from "../components/axios.js";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -175,7 +176,7 @@ function Samplebook() {
     const getBooks = async () => {
       try {
         // const res = await axios.get("http://localhost:5000/books");
-        const res = await axios.get("https://devshelf-webwizards-backend.onrender.com/books");
+        const res = await api.get("https://devshelf-webwizards-backend.onrender.com/books");
         setBooks(res.data);
       } catch (error) {
         console.log(error);

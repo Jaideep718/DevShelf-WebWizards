@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import api from "../components/axios.js";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -16,7 +17,7 @@ function BookDetails() {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await axios.get(
+        const res = await api.get(
           // `http://localhost:5000/book?title=${encodeURIComponent(title)}`
            `https://devshelf-webwizards-backend.onrender.com/book?title=${encodeURIComponent(title)}`
         );
@@ -50,7 +51,7 @@ function BookDetails() {
     // };
     const fetchDepartmentBooks = async (department, currentBookTitle) => {
       try {
-        const res = await axios.get(
+        const res = await api.get(
           // `http://localhost:5000/books?department=${encodeURIComponent(department)}`
            `https://devshelf-webwizards-backend.onrender.com/books?department=${encodeURIComponent(department)}`
         );

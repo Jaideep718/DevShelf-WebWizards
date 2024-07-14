@@ -3,7 +3,8 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import api from "../components/axios.js";
 
 function Cards({ item }) {
   const encodedTitle = encodeURIComponent(item.title);
@@ -18,7 +19,7 @@ function Cards({ item }) {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/return', { title: item.title, email });
+      const response = await api.post('http://localhost:5000/return', { title: item.title, email });
       if (response.status === 200) {
         toast.success("Book successfully returned!", { duration: 1500 });
         setTimeout(() => {
