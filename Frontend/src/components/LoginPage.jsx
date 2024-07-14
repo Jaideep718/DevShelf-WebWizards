@@ -1,112 +1,6 @@
-/*import React, { useState } from "react";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
-
-const Login = () => {
-  const [email, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post("http://localhost:5000/login", {
-        email,
-        password,
-      });
-      if (response.data.success) {
-        // alert("Logged in successfully");
-        toast.success("Loggedin successfully", { duration: 1500 });
-        navigate("/books");
-        
-      } else {
-        // alert(response.data.message || 'Invalid emailid or password');
-        toast.success(response.data.message || "Invalid email id or password",{ duration: 2000 });
-      }
-    } catch (err) {
-      // alert(error.response.data.message || 'Error logging in');
-      toast.error("Error: " + err.response.data.message || "Error logging in",{ duration: 2000 });
-    }
-  };
-
-  return (
-    <div className="bg-gray-100 flex items-center justify-center h-screen">
-      <div className="bg-white p-8 rounded shadow-md w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
-        <form onSubmit={handleSubmit} method="dialog" className="space-y-4">
-          <div>
-            <label htmlFor="username" className="block mb-1">
-              Email-id
-            </label>
-            <input
-              type="email"
-              id="username"
-              name="username"
-              className="w-full px-3 py-2 border rounded-md outline-none focus:border-blue-500"
-              placeholder="Enter your Email-id"
-              value={email}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password" className="block mb-1">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              className="w-full px-3 py-2 border rounded-md outline-none focus:border-blue-500"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <a href="#" className="text-blue-500 hover:underline">
-                Forgot password?
-              </a>
-            </div>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-            >
-              Login
-            </button>
-          </div>
-        </form>
-        <div className="mt-4 text-center">
-          <p className="text-sm">
-            Don't have an account?{" "}
-            <Link
-              to="/signup"
-              className="text-blue-500 cursor-pointer hover:underline"
-            >
-              Sign Up
-            </Link>
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Login;*/
-
-
-
-
-
-
 
 import React, { useState } from "react";
-// import axios from "axios";
-import api from "../components/axios.js";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -119,8 +13,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      // const response = await axios.post("http://localhost:5000/login", {
-      const response = await api.post("https://devshelf-webwizards-backend.onrender.com/login", {
+      const response = await axios.post("http://localhost:5000/login", {
         email,
         password,
       });
