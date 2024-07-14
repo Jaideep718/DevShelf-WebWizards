@@ -2,8 +2,6 @@
 # DevShelf-WebWizards
 ## Summer of Innovation 2024
 
-A brief description of what this project does and who it's for
-
 ### Prerequisites
 Ensure you have the following installed on your machine:
 - A code editor (e.g., VS Code)
