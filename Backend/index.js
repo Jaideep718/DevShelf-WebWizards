@@ -2,17 +2,9 @@ import express from "express";
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-
 const app = express();
-
-// const corsOptions = {
-//   origin: 'https://devshelf-webwizards-front.onrender.com', // Replace with your frontend URL
-//   optionsSuccessStatus: 200,
-// };
-
 app.use(bodyParser.json());
 app.use(cors());
-// app.use(cors(corsOptions));
 
 mongoose.connect('mongodb://localhost:27017/LMS_Project', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -20,14 +12,6 @@ mongoose.connect('mongodb://localhost:27017/LMS_Project', { useNewUrlParser: tru
 mongoose.connection.once('open', () => {
   console.log('Connected to MongoDB');
 });
-
-// User schema
-// const userSchema = new mongoose.Schema({
-//   username: String,
-//   email: String,
-//   password: String,
-//   //issuedBooks: [String],
-// });
 
 // User schema
 const userSchema = new mongoose.Schema({
@@ -118,30 +102,6 @@ app.get('/book', async (req, res) => {
   }
 });
 
-/*app.post('/issue', async (req, res) => {
-  const { title, issueDate, dueDate } = req.body;
-
-  try {
-    // Find the book by title and decrement the count
-    const book = await Book.findOne({ title: decodeURIComponent(title) });
-    if (!book) {
-      return res.status(404).send('Book not found');
-    }
-
-    if (book.count <= 0) {
-      return res.status(400).send('No copies left to issue');
-    }
-
-    // Decrement the book count
-    book.count -= 1;
-    await book.save();
-    res.status(200).send('Book issued successfully');
-  } catch (error) {
-    console.error('Error issuing book:', error);
-    res.status(500).send('Error issuing book');
-  }
-});*/
-
 app.post('/issue', async (req, res) => {
   const { title, email, issueDate, dueDate } = req.body;
 
@@ -180,27 +140,6 @@ app.post('/issue', async (req, res) => {
   }
 });
 
-
-/*
-app.post('/return', async (req, res) => {
-  const { title } = req.body;
-
-  try {
-    const book = await Book.findOne({ title: decodeURIComponent(title) });
-    if (!book) {
-      return res.status(404).send('Book not found');
-    }
-
-    book.count += 1;
-    await book.save();
-
-    res.status(200).send('Book returned successfully');
-  } catch (error) {
-    console.error('Error returning book:', error);
-    res.status(500).send('Error returning book');
-  }
-});*/
-
 app.post('/return', async (req, res) => {
   const { title, email } = req.body;
 
@@ -238,7 +177,8 @@ app.post('/return', async (req, res) => {
 
 
 // Start the server
-const PORT = process.env.PORT || 5000;
+//const PORT = process.env.PORT || 5000;
+const PORT = 5000 ;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
