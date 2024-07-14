@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import axios from "axios";
-import api from "../components/axios.js";
+import axios from "axios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -17,9 +16,8 @@ function BookDetails() {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await api.get(
-          // `http://localhost:5000/book?title=${encodeURIComponent(title)}`
-           `https://devshelf-webwizards-backend.onrender.com/book?title=${encodeURIComponent(title)}`
+        const res = await axios.get(
+          `http://localhost:5000/book?title=${encodeURIComponent(title)}`
         );
         if (res.data) {
           setBook(res.data);
@@ -34,26 +32,10 @@ function BookDetails() {
         setLoading(false);
       }
     };
-
-    // const fetchDepartmentBooks = async (department) => {
-    //   try {
-    //     const res = await axios.get(
-    //       `http://localhost:5000/books?department=${encodeURIComponent(
-    //         department
-    //       )}`
-    //     );
-    //     if (res.data) {
-    //       setDepartmentBooks(res.data);
-    //     }
-    //   } catch (error) {
-    //     console.error("Error fetching department books:", error);
-    //   }
-    // };
     const fetchDepartmentBooks = async (department, currentBookTitle) => {
       try {
-        const res = await api.get(
-          // `http://localhost:5000/books?department=${encodeURIComponent(department)}`
-           `https://devshelf-webwizards-backend.onrender.com/books?department=${encodeURIComponent(department)}`
+        const res = await axios.get(
+          `http://localhost:5000/books?department=${encodeURIComponent(department)}`
         );
         if (res.data) {
           const filteredBooks = res.data.filter(book => book.title !== currentBookTitle);
@@ -112,26 +94,10 @@ function BookDetails() {
   return (
     <>
       <div className="">
-        
-        {/* <div>
-          <Slider {...settings}>
-            {filterData.map((item) => (
-              <Cards item={book} key={book.id} />
-            ))}
-          </Slider>
-        </div> */}
       </div>
 
       <Cards2 item={book} key={book.id} />
-        {/* <h1 className="font-semibold text-2xl">{book.title}</h1>
-        <p>{book.description}</p>
-        <p>Author: {book.author}</p>
-        <p>Genre: {book.genre}</p>
-        <p>Department: {book.department}</p>
-        <p>Count: {book.count}</p>
-        <p>Vendor: {book.vendor}</p>
-        <p>Publisher: {book.publisher}</p> */}
-      
+        
       <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 mt-4">
       <div>
           <h1 className="font-semibold text-xl pb-2 mt-10 ml-10">
