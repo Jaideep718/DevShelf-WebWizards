@@ -15,10 +15,8 @@ const Signup = () => {
       console.log('Sending data:', { username, email, password });
       await axios.post('http://localhost:5000/signup', { username, email, password });
       toast.success("User registered successfully", { duration: 1500 });
-      // alert('User registered successfully');
       navigate('/login');
     } catch (error) {
-      // alert('Error register user');
       toast.error("Error register user",{ duration: 2000 });
     }
   };

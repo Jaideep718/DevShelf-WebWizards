@@ -9,10 +9,8 @@ function Cards({ item }) {
       <div className="mt-4 my-3 p-3">
         <div className="card bg-base-100 w-92 shadow-xl hover:scale-105 duration-200 dark:bg-slate-1000 dark:text-white">
           <figure className="sm:h-60 md:h-72 lg:h-96">
-            {/* className="sm:h-60 md:h-72 lg:h-96" */}
             <img
               className="w-full h-65 object-cover rounded-md"
-              // src={"https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149330605.jpg?size=338&ext=jpg&ga=GA1.1.2113030492.1720396800&semt=ais_user"}
               src={
                 item.img ||
                 "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149330605.jpg?size=338&ext=jpg&ga=GA1.1.2113030492.1720396800&semt=ais_user"

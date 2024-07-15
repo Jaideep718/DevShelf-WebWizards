@@ -5,7 +5,6 @@ function Login() {
     <div>
         <div className="h-16 flex justify-between items-center text-center bg-[url(https://thevisualcommunicationguy.com/wp-content/uploads/2016/05/Header-Background.jpg)]">
             <p className="text-3xl text-lime-300 rounded-xl font-serif text-left">LIBRARY MANAGEMENT SYSTEM</p>
-            {/* <button href = "/login" className="h-9 w-20 mr-10 text-center text-sm bg-black hover:bg-white text-slate-100 hover:text-black rounded-lg ">LOGIN</button>  */}
             <a href="/login" className="w-20 mr-10 text-center text-sm bg-black hover:bg-white text-slate-100 hover:text-black rounded-lg ">LOGIN</a> 
         </div>
         <div className="h-lvh flex justify-center bg-[url(https://www.checkatrade.com/blog/wp-content/uploads/2021/03/home-library-cost.jpg)] bg-cover">

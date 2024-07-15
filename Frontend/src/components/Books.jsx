@@ -22,30 +22,6 @@ function Books() {
     if (searchTerm.trim()) {
       navigate(`/book/${encodeURIComponent(searchTerm.trim())}`);
     }
-    // if (searchTerm.trim()) {
-    //   try {
-    //     const response = await fetch(`http://localhost:5000/book?title=${encodeURIComponent(searchTerm.trim())}`);
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //       setBook(data); // Update the state with the fetched book data
-    //     } else {
-    //       setBook(null); // Clear the state if the book is not found
-    //     }
-    //   } catch (error) {
-    //     console.error("Error fetching book:", error);
-    //     setBook(null);
-    //   }
-    // }
-   
-    // if (searchTerm.trim()) {
-    //   // Case-sensitive filtering
-    //   const filtered = books.filter(book => 
-    //     book.title.includes(searchTerm.trim())
-    //   );
-    //   setFilteredBooks(filtered);
-    // } else {
-    //   setFilteredBooks(books); // Reset to original list if search term is empty
-    // }
   };
 
   useEffect(() => {
@@ -61,9 +37,6 @@ function Books() {
       };
     };
   }, []);
-  // const notify = () => {
-  //   toast.success("Logout Successful", { duration: 5000 });
-  // };
 
   const notify = () => {
     toast.success("Logout Successful", { duration: 1500 });
