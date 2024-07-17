@@ -56,8 +56,8 @@ function IssueBook() {
         navigate("/books");
       }, 2000);
     } catch (error) {
-      //toast.error("Error issuing book .", { duration: 2000 });
-      console.error("Error issuing book:", error);
+      toast.error("You have already borrowed this book", { duration: 2000 });
+      // console.error("Error issuing book:", error);
     }
   };
 
